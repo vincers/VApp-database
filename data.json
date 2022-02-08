@@ -1,0 +1,129 @@
+{
+    "user_type": [
+        "Admin",
+        "Creator",
+        "Client Master",
+        "Client Worker"
+    ],
+    "art_type": [
+        {
+            "name": "video",
+            "abbr": "v",
+            "types": [
+                {
+                    "shorts": {
+                        "viral": {
+                            "formato": "1080px x 1350px"
+                        },
+                        "reels": {
+                            "formato": "1080px x 1920px"
+                        },
+                        "igtv": {
+                            "formato": "1080px x 1920px"
+                        },
+                        "audio": {
+                            "formato": "1080px x 1350px;1080px x 1920px"
+                        }
+                    }
+                },
+                {
+                    "prime": {
+                        "youtube": {
+                            "formato": "1920px x 1080px"
+                        },
+                        "apresentacao": {
+                            "formato": "1920px x 1080px"
+                        },
+                        "treinamento": {
+                            "formato": "1920px x 1080px"
+                        }
+                    }
+                },
+                {
+                    "masterclass": {
+                        "video de vendas": {
+                            "formato": "1920px x 1080px"
+                        },
+                        "aula": {
+                            "formato": "1920px x 1080px"
+                        },
+                        "documentario": {
+                            "formato": "1920px x 1080px"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "imagem",
+            "abbr": "m",
+            "types": [
+                {
+                    "name": "storie",
+                    "formato": "1080px x 1920px"
+                },
+                {
+                    "name": "feed",
+                    "formato": "1080px x 1080px"
+                },
+                {
+                    "name": "feed vertical",
+                    "formato": "1080px x 1350px"
+                },
+                {
+                    "name": "feed horizontal",
+                    "formato": "1920px x 1080px"
+                },
+                {
+                    "name": "slide",
+                    "formato": "1920px x 1080px"
+                },
+                {
+                    "name": "ebook",
+                    "formato": "2560px x 1600px"
+                },
+                {
+                    "name": "encarte",
+                    "formato": "multiplos"
+                }
+            ]
+        },
+        {
+            "name": "padronizacao",
+            "abbr": "p",
+            "types": [
+                {
+                    "name": "vinheta",
+                    "formato": "1920px x 1080px"
+                },
+                {
+                    "name": "animacao",
+                    "formato": "1920px x 1080px"
+                },
+                {
+                    "name": "capa rede social",
+                    "formato": "2048px x 1152px",
+                    "corte central": "1235px x 338px",
+                    "margens": {
+                        "vertical": "406,5px; 1641,5px",
+                        "horizontal": "745px; 407px"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "conteudo",
+            "abbr": "c",
+            "types": [
+                {
+                    "name": "categorizacao viral I",
+                    "duracao maxima": "2min30"
+                },
+                {
+                    "name": "categorizacao viral II",
+                    "duracao maxima": "12min"
+                }
+            ]
+        }
+    ]
+}

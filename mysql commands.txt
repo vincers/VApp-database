@@ -1,0 +1,11 @@
+
+ALTER TABLE User_Client_Master ADD abbr varchar(5) AFTER name;
+
+INSERT INTO Login (email, password, type) VALUES ('felipesantanadias@gmail.com', '952917139', 1);
+
+INSERT INTO Login (email, password, type) VALUES ('rocha.kbarbosa@gmail.com', '987315480', 2);
+
+
+INSERT INTO User_Creator (user_id, name, abbr, email, type, description, balance) VALUES (3, 'Felipe Santana Dias', 'Lipe', 'felipesantanadias@gmail.com', 1, 'Editor de vídeo', 0.0);
+
+INSERT INTO User_Client_Master (user_id, name, abbr, email, type, description, balance) VALUES (4, 'Arquitetando mais Ela', 'AME', 'rocha.kbarbosa@gmail.com', 2, 'Especialista em Encantamento de clientes', 0.0);
