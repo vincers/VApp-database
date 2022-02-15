@@ -44,7 +44,6 @@ def CodeToID(code, art_type):
 #Calcular tempo de entrega dependendo do tipo de arte
 #Preço de acordo com o tipo de produto
 
-
 #Update BD com informações Art Type
 def DadosArtType(data, mycursor):
 
@@ -82,7 +81,6 @@ def EncontrarEspecifico(tipo, data):
 	else:
 		return data['art_type'][0]['types'][0]['shorts']['viral']
 
-
 def DadosArt(data, mycursor, art_type):
 
 	artes = readCSV()
@@ -99,8 +97,6 @@ def DadosArt(data, mycursor, art_type):
 	client_id = 4
 	creator_id = 3
 	
-	
-
 def writeJSON():
 
 	#Dicionários
@@ -268,9 +264,6 @@ def main():
   	#	print(x)
 
 	#mydb.commit()
-
-	
-
 
 
 if __name__ == "__main__":
