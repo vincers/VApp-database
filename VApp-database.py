@@ -27,8 +27,23 @@ def IDToCode(ID, art_type):
 def CodeToID(code, art_type):
 	i = 0
 
+	if code[0].lower() == "a":
+		idNumber = ""
+		for j in range(len(code)):
+			if j == 0:
+				idNumber = "6"
+				continue
+
+			if j == 1 and code[1].lower() == 'v':
+				continue
+
+			else:
+				idNumber = idNumber + code[j]
+
+		return int(idNumber)
+
 	for i in range(len(art_type)):
-		if art_type[i]["abbr"] == code[0]:
+		if art_type[i]["abbr"] == code[0].lower():
 
 			idNumber = ""
 			for j in range(len(code)):
@@ -37,9 +52,8 @@ def CodeToID(code, art_type):
 
 				else:
 					idNumber = idNumber + code[j]
-			break
 
-	return int(idNumber)
+			return int(idNumber)
 
 #Calcular tempo de entrega dependendo do tipo de arte
 #Preço de acordo com o tipo de produto
@@ -64,39 +78,53 @@ def CalcularPrazo(duration):
 def EncontrarEspecifico(tipo, data):
 
 	if tipo.lower() == "feed":
-		return data['art_type'][0]['types'][0]['shorts']['viral']
+		return data['art_type'][0]['types'][0]['types'][0]
 
 	if tipo.lower() == "stories":
-		return data['art_type'][0]['types'][0]['shorts']['viral']
+		return data['art_type'][0]['types'][0]['types'][0]
 
 	if tipo.lower() == "igtv":
-		return data['art_type'][0]['types'][0]['shorts']['igtv']
+		return data['art_type'][0]['types'][0]['types'][2]
 
 	if tipo.lower() == "reels":
-		return data['art_type'][0]['types'][0]['shorts']['reels']
+		return data['art_type'][0]['types'][0]['types'][1]
 
 	if tipo.lower() == "audio":
-		return data['art_type'][0]['types'][0]['shorts']['audio']
+		return data['art_type'][0]['types'][0]['types'][3]
 
 	else:
-		return data['art_type'][0]['types'][0]['shorts']['viral']
+		return data['art_type'][0]['types'][0]['types'][0]
 
-def DadosArt(data, mycursor, art_type):
+def DadosArt(data, mycursor):
 
 	artes = readCSV()
 
-	idArt = CodeToID(artes[i][0], art_type)
-	spec = EncontrarEspecifico(artes[i][3], data)
-	title = artes[i][1]
-	description = artes[i][2]
-	files = "Vídeo base: " + artes[i][6]
-	status = artes[i][4]
-	final_file = artes[i][5]
-	eta = CalcularPrazo(spec["eta"])
-	
+	type_id = 0
 	client_id = 4
 	creator_id = 3
-	
+
+	sql = "INSERT INTO Art (art_id, type_id, specification, client_id, creator_id, title, description, files, delivery_time, status, final_file) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+
+	for i in range(len(artes)):
+		try:
+			art_id = CodeToID(artes[i][0], data['art_type'])
+			spec = EncontrarEspecifico(artes[i][3], data)
+			specification = json.dumps(spec)
+			title = artes[i][1]
+			description = artes[i][2]
+			files = "Vídeo base: " + artes[i][6]
+			status = artes[i][4]
+			final_file = artes[i][5]
+			delivery_time = CalcularPrazo(spec["eta"]["level 2"])
+
+			val = (art_id, type_id, specification, client_id, creator_id, title, description, files, delivery_time, status, final_file)
+			
+			mycursor.execute(sql, val)
+
+		except:
+			continue
+		
+
 def writeJSON():
 
 	#Dicionários
@@ -110,26 +138,70 @@ def writeJSON():
 
 			"types": [
 				{
-				"shorts": {
-					"viral": {"formato":"1080px x 1350px", "eta": {"level 1": "30:00:00", "level 2": "54:00:00","level 3": "78:00:00"}},
-					"reels": {"formato":"1080px x 1920px", "eta": {"level 1": "30:00:00", "level 2": "54:00:00","level 3": "78:00:00"}},
-					"igtv": {"formato":"1080px x 1920px", "eta": {"level 1": "30:00:00", "level 2": "54:00:00","level 3": "78:00:00"}},
-					"audio": {"formato": ["1080px x 1350px", "1080px x 1920px"], "eta": {"level 1": "30:00:00", "level 2": "54:00:00","level 3": "78:00:00"}}
-				}
+				"name": "shorts",
+				"types": [
+					{
+					"name": "viral",
+					"formato":"1080px x 1350px",
+					"eta": {"level 1": "30:00:00", "level 2": "54:00:00","level 3": "78:00:00"}
+					},
+					{
+					"name": "reels",
+					"formato":"1080px x 1920px",
+					"eta": {"level 1": "30:00:00", "level 2": "54:00:00","level 3": "78:00:00"}
+					},
+					{
+					"name": "igtv",
+					"formato":"1080px x 1920px",
+					"eta": {"level 1": "30:00:00", "level 2": "54:00:00","level 3": "78:00:00"}
+					},
+					{
+					"name": "audio",
+					"formato": ["1080px x 1350px", "1080px x 1920px"],
+					"eta": {"level 1": "30:00:00", "level 2": "54:00:00","level 3": "78:00:00"}
+					}
+				]
+				},
+
+				{
+				"name": "prime",
+				"tipes": [
+					{
+					"name": "youtube",
+					"formato":"1920px x 1080px",
+					"eta": {"level 1": "54:00:00", "level 2": "102:00:00","level 3": "126:00:00"}
+					},
+					{
+					"name": "apresentacao",
+					"formato":"1920px x 1080px",
+					"eta": {"level 1": "54:00:00", "level 2": "102:00:00","level 3": "126:00:00"}
+					},
+					{
+					"name": "treinamento",
+					"formato":"1920px x 1080px",
+					"eta": {"level 1": "54:00:00", "level 2": "102:00:00","level 3": "126:00:00"}
+					}
+				]
 				},
 				{
-				"prime": {
-					"youtube": {"formato":"1920px x 1080px", "eta": {"level 1": "54:00:00", "level 2": "102:00:00","level 3": "126:00:00"}},
-					"apresentacao": {"formato":"1920px x 1080px", "eta": {"level 1": "54:00:00", "level 2": "102:00:00","level 3": "126:00:00"}},
-					"treinamento": {"formato":"1920px x 1080px", "eta": {"level 1": "54:00:00", "level 2": "102:00:00","level 3": "126:00:00"}}
-				}
-				},
-				{
-				"masterclass": {
-					"video de vendas": {"formato": "1920px x 1080px", "eta": {"level 1": "102:00:00", "level 2": "126:00:00","level 3": "174:00:00"}},
-					"aula": {"formato": "1920px x 1080px", "eta": {"level 1": "102:00:00", "level 2": "126:00:00","level 3": "174:00:00"}},
-					"documentario": {"formato": "1920px x 1080px", "eta": {"level 1": "102:00:00", "level 2": "126:00:00","level 3": "174:00:00"}}
-				}
+				"name": "masterclass",
+				"types":  [
+					{
+					"name": "video de vendas",
+					"formato": "1920px x 1080px",
+					"eta": {"level 1": "102:00:00", "level 2": "126:00:00","level 3": "174:00:00"}
+					},
+					{
+					"name": "aula",
+					"formato": "1920px x 1080px",
+					"eta": {"level 1": "102:00:00", "level 2": "126:00:00","level 3": "174:00:00"}
+					},
+					{
+					"name": "documentario",
+					"formato": "1920px x 1080px",
+					"eta": {"level 1": "102:00:00", "level 2": "126:00:00","level 3": "174:00:00"}
+					}
+				]
 				}
 			]
 			},
@@ -245,25 +317,24 @@ def main():
 
 	#Ler arquivo JSON
 	with open('data.json', 'r') as openfile:
-		json_object = json.load(openfile)
+		data = json.load(openfile)
 
 	#Criar Art Type Table
-	#art_type = json_object['art_type']
+	#art_type = data['art_type']
 	#DadosArtType(art_type, mycursor)
 
 	#Criar cards de artes
-	artes = readCSV()
-	print(artes[0])
-	spec = EncontrarEspecifico(artes[0][3], json_object)
-	print(CalcularPrazo(spec["eta"]["level 2"]))
+	DadosArt(data, mycursor)
+	mydb.commit()
+	print("Data uploaded")
 
 	#Printar tudo
-	#mycursor.execute("SELECT name FROM Art_Type")
-	#myresult = mycursor.fetchall()
-	#for x in myresult:
-  	#	print(x)
+	mycursor.execute("SELECT * FROM Art")
+	myresult = mycursor.fetchall()
+	for x in myresult:
+  		print(x)
 
-	#mydb.commit()
+	
 
 
 if __name__ == "__main__":

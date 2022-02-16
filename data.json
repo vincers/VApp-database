@@ -11,46 +11,112 @@
             "abbr": "v",
             "types": [
                 {
-                    "shorts": {
-                        "viral": {
-                            "formato": "1080px x 1350px"
+                    "name": "shorts",
+                    "types": [
+                        {
+                            "name": "viral",
+                            "formato": "1080px x 1350px",
+                            "eta": {
+                                "level 1": "30:00:00",
+                                "level 2": "54:00:00",
+                                "level 3": "78:00:00"
+                            }
                         },
-                        "reels": {
-                            "formato": "1080px x 1920px"
+                        {
+                            "name": "reels",
+                            "formato": "1080px x 1920px",
+                            "eta": {
+                                "level 1": "30:00:00",
+                                "level 2": "54:00:00",
+                                "level 3": "78:00:00"
+                            }
                         },
-                        "igtv": {
-                            "formato": "1080px x 1920px"
+                        {
+                            "name": "igtv",
+                            "formato": "1080px x 1920px",
+                            "eta": {
+                                "level 1": "30:00:00",
+                                "level 2": "54:00:00",
+                                "level 3": "78:00:00"
+                            }
                         },
-                        "audio": {
-                            "formato": "1080px x 1350px;1080px x 1920px"
+                        {
+                            "name": "audio",
+                            "formato": [
+                                "1080px x 1350px",
+                                "1080px x 1920px"
+                            ],
+                            "eta": {
+                                "level 1": "30:00:00",
+                                "level 2": "54:00:00",
+                                "level 3": "78:00:00"
+                            }
                         }
-                    }
+                    ]
                 },
                 {
-                    "prime": {
-                        "youtube": {
-                            "formato": "1920px x 1080px"
+                    "name": "prime",
+                    "tipes": [
+                        {
+                            "name": "youtube",
+                            "formato": "1920px x 1080px",
+                            "eta": {
+                                "level 1": "54:00:00",
+                                "level 2": "102:00:00",
+                                "level 3": "126:00:00"
+                            }
                         },
-                        "apresentacao": {
-                            "formato": "1920px x 1080px"
+                        {
+                            "name": "apresentacao",
+                            "formato": "1920px x 1080px",
+                            "eta": {
+                                "level 1": "54:00:00",
+                                "level 2": "102:00:00",
+                                "level 3": "126:00:00"
+                            }
                         },
-                        "treinamento": {
-                            "formato": "1920px x 1080px"
+                        {
+                            "name": "treinamento",
+                            "formato": "1920px x 1080px",
+                            "eta": {
+                                "level 1": "54:00:00",
+                                "level 2": "102:00:00",
+                                "level 3": "126:00:00"
+                            }
                         }
-                    }
+                    ]
                 },
                 {
-                    "masterclass": {
-                        "video de vendas": {
-                            "formato": "1920px x 1080px"
+                    "name": "masterclass",
+                    "types": [
+                        {
+                            "name": "video de vendas",
+                            "formato": "1920px x 1080px",
+                            "eta": {
+                                "level 1": "102:00:00",
+                                "level 2": "126:00:00",
+                                "level 3": "174:00:00"
+                            }
                         },
-                        "aula": {
-                            "formato": "1920px x 1080px"
+                        {
+                            "name": "aula",
+                            "formato": "1920px x 1080px",
+                            "eta": {
+                                "level 1": "102:00:00",
+                                "level 2": "126:00:00",
+                                "level 3": "174:00:00"
+                            }
                         },
-                        "documentario": {
-                            "formato": "1920px x 1080px"
+                        {
+                            "name": "documentario",
+                            "formato": "1920px x 1080px",
+                            "eta": {
+                                "level 1": "102:00:00",
+                                "level 2": "126:00:00",
+                                "level 3": "174:00:00"
+                            }
                         }
-                    }
+                    ]
                 }
             ]
         },
@@ -60,31 +126,66 @@
             "types": [
                 {
                     "name": "storie",
-                    "formato": "1080px x 1920px"
+                    "formato": "1080px x 1920px",
+                    "eta": {
+                        "level 1": "18:00:00",
+                        "level 2": "30:00:00",
+                        "level 3": "42:00:00"
+                    }
                 },
                 {
                     "name": "feed",
-                    "formato": "1080px x 1080px"
+                    "formato": "1080px x 1080px",
+                    "eta": {
+                        "level 1": "18:00:00",
+                        "level 2": "30:00:00",
+                        "level 3": "42:00:00"
+                    }
                 },
                 {
                     "name": "feed vertical",
-                    "formato": "1080px x 1350px"
+                    "formato": "1080px x 1350px",
+                    "eta": {
+                        "level 1": "18:00:00",
+                        "level 2": "30:00:00",
+                        "level 3": "42:00:00"
+                    }
                 },
                 {
                     "name": "feed horizontal",
-                    "formato": "1920px x 1080px"
+                    "formato": "1920px x 1080px",
+                    "eta": {
+                        "level 1": "18:00:00",
+                        "level 2": "30:00:00",
+                        "level 3": "42:00:00"
+                    }
                 },
                 {
                     "name": "slide",
-                    "formato": "1920px x 1080px"
+                    "formato": "1920px x 1080px",
+                    "eta": {
+                        "level 1": "54:00:00",
+                        "level 2": "102:00:00",
+                        "level 3": "126:00:00"
+                    }
                 },
                 {
                     "name": "ebook",
-                    "formato": "2560px x 1600px"
+                    "formato": "2560px x 1600px",
+                    "eta": {
+                        "level 1": "54:00:00",
+                        "level 2": "102:00:00",
+                        "level 3": "126:00:00"
+                    }
                 },
                 {
                     "name": "encarte",
-                    "formato": "multiplos"
+                    "formato": "multiplos",
+                    "eta": {
+                        "level 1": "18:00:00",
+                        "level 2": "30:00:00",
+                        "level 3": "42:00:00"
+                    }
                 }
             ]
         },
@@ -94,15 +195,18 @@
             "types": [
                 {
                     "name": "vinheta",
-                    "formato": "1920px x 1080px"
+                    "formato": "1920px x 1080px",
+                    "eta": "126:00:00"
                 },
                 {
                     "name": "animacao",
-                    "formato": "1920px x 1080px"
+                    "formato": "1920px x 1080px",
+                    "eta": "126:00:00"
                 },
                 {
                     "name": "capa rede social",
                     "formato": "2048px x 1152px",
+                    "eta": "54:00:00",
                     "corte central": "1235px x 338px",
                     "margens": {
                         "vertical": "406,5px; 1641,5px",
@@ -117,11 +221,13 @@
             "types": [
                 {
                     "name": "categorizacao viral I",
-                    "duracao maxima": "2min30"
+                    "duracao maxima": "2min30",
+                    "eta": "54:00:00"
                 },
                 {
                     "name": "categorizacao viral II",
-                    "duracao maxima": "12min"
+                    "duracao maxima": "12min",
+                    "eta": "54:00:00"
                 }
             ]
         }

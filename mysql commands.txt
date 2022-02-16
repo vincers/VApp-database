@@ -9,3 +9,15 @@ INSERT INTO Login (email, password, type) VALUES ('rocha.kbarbosa@gmail.com', '9
 INSERT INTO User_Creator (user_id, name, abbr, email, type, description, balance) VALUES (3, 'Felipe Santana Dias', 'Lipe', 'felipesantanadias@gmail.com', 1, 'Editor de vídeo', 0.0);
 
 INSERT INTO User_Client_Master (user_id, name, abbr, email, type, description, balance) VALUES (4, 'Arquitetando mais Ela', 'AME', 'rocha.kbarbosa@gmail.com', 2, 'Especialista em Encantamento de clientes', 0.0);
+
+ALTER TABLE Login DROP COLUMN type
+
+CREATE TABLE Permissions (
+user_id INT NOT NULL,
+admin BOOL,
+creator BOOL,
+client BOOL
+)
+
+INSERT INTO Permissions (user_id, admin, creator, client) VALUES (3, false, true, false)
+INSERT INTO Permissions (user_id, admin, creator, client) VALUES (4, false, false, true)
