@@ -5,7 +5,6 @@ INSERT INTO Login (email, password, type) VALUES ('felipesantanadias@gmail.com',
 
 INSERT INTO Login (email, password, type) VALUES ('rocha.kbarbosa@gmail.com', '987315480', 2);
 
-
 INSERT INTO User_Creator (user_id, name, abbr, email, type, description, balance) VALUES (3, 'Felipe Santana Dias', 'Lipe', 'felipesantanadias@gmail.com', 1, 'Editor de vídeo', 0.0);
 
 INSERT INTO User_Client_Master (user_id, name, abbr, email, type, description, balance) VALUES (4, 'Arquitetando mais Ela', 'AME', 'rocha.kbarbosa@gmail.com', 2, 'Especialista em Encantamento de clientes', 0.0);
@@ -21,3 +20,12 @@ client BOOL
 
 INSERT INTO Permissions (user_id, admin, creator, client) VALUES (3, false, true, false)
 INSERT INTO Permissions (user_id, admin, creator, client) VALUES (4, false, false, true)
+
+ALTER TABLE User_Creator DROP COLUMN type
+ALTER TABLE User_Client DROP COLUMN type
+ALTER TABLE User_Admin DROP COLUMN type
+ALTER TABLE Login ADD type varchar(7)
+DROP TABLE Permissions
+
+UPDATE Login SET type = 'client' WHERE id = 4
+UPDATE Login SET type = 'creator' WHERE id = 3
